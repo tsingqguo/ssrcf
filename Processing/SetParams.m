@@ -4,6 +4,8 @@ params.enableCSR = true;
 params.selector = 1; % 1: using obj filters, -1: using context filters,0: using mix filters
 params.init = 0;
 params.update_c = 0;
+params.count_c = 0;
+params.count_thr = 5;
 s_frames = seq.s_frames;
 
 %translation filter feature parameters
