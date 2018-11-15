@@ -8,7 +8,7 @@ if data.seq.frame ==1
 else
     selector = params.selector;
 end
-if ~params.update_c
+if ~params.update_c && selector==-1
     return;
 end
 switch selector

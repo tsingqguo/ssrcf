@@ -32,7 +32,7 @@ for frame = 1:data.seq.num_frames
     
     data.seq.im_prev = data.seq.im;
     
-    Visualization(bSaveImage, params.vis, data.seq.frame, data.seq.im, data.obj.pos, data.obj.target_sz);
+    Visualization(bSaveImage, params.selector, data.seq.frame, data.seq.im, data.obj.pos, data.obj.target_sz);
     
 end
 
