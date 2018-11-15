@@ -10,8 +10,6 @@ addpath(genpath('Processing/'));
 addpath(genpath('training/'));
 
 seq.format = 'otb';
-paramsCSR = [];
-dataCSR = [];
 params = SetParams(seq);
 [params, data] = PrepareData(params);
 
