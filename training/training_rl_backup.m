@@ -4,7 +4,7 @@ close all
 addpath(genpath('/home/fan/Desktop/Object_Tracking/tracker_benchmark_v1.0/trackers/SSRDCF/Processing/'));
 addpath(genpath('/home/fan/Desktop/Object_Tracking/tracker_benchmark_v1.0/trackers/SSRDCF/utils/'));
 addpath(genpath('/home/fan/Desktop/Object_Tracking/libsvm/matlab'));
-
+% testing
 pathAnno = '/home/fan/Desktop/Object_Tracking/tracker_benchmark_v1.0/anno/';
 trainstate=1;
 if exist('svmmodel.mat')
