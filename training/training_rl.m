@@ -136,43 +136,60 @@ switch s.name(1:end-2)
     case 'freeman3'
         syn_s.thr_small=0.1;
         syn_s.thr_large=0.25;    
-    case 'mountainbike'
-        syn_s.thr_small=0.04;
-        syn_s.thr_large=0.15; 
+
     % fine-tune   
     case 'lemming'
         syn_s.thr_small=0.15;
         syn_s.thr_large=0.15; 
-    case 'girl'
+    case 'girl'%ran
         syn_s.thr_small=0.1;
-        syn_s.thr_large=0.25;    
-    case 'soccer'
+        syn_s.thr_large=0.25;  
+    case 'soccer'%ran
         syn_s.thr_small=0.02;
-        syn_s.thr_large=0.15; 
-        
-     case 'singer2'
+        syn_s.thr_large=0.15;         
+     case 'singer2'%big
         syn_s.thr_small=0.04;
-        syn_s.thr_large=0.25;
-        
+        syn_s.thr_large=0.5;        
      case 'freeman1'
         syn_s.thr_small=0.04;
-        syn_s.thr_large=0.25;
-        
+        syn_s.thr_large=0.25;        
      case 'freeman4'
         syn_s.thr_small=0.04;
-        syn_s.thr_large=0.75;
-        
-     case 'ironman'
+        syn_s.thr_large=0.75;       
+     case 'ironman'%small
         syn_s.thr_small=0.04;
-        syn_s.thr_large=0.12;
+        syn_s.thr_large=0.12;       
+     case 'wonman'
+        syn_s.thr_small=0.1;
+        syn_s.thr_large=0.4;   
+     case 'shaking'%big
+        syn_s.thr_small=0.1;
+        syn_s.thr_large=0.4;  
         
-%     case 'motorrolling'
-%         syn_s.thr_small=0.04;
-%         syn_s.thr_large=0.25;  
+     case 'carscale'%small
+        syn_s.thr_small=0.02;
+        syn_s.thr_large=0.15; 
+     
+     %----------2015----------   
+     case 'coupon'%small
+        syn_s.thr_small=0.04;
+        syn_s.thr_large=0.25; 
     
-%     case 'skiing'
-%         syn_s.thr_small=0.75;
-%         syn_s.thr_large=0.2;  
+     case 'dog'%small
+        syn_s.thr_small=0.04;
+        syn_s.thr_large=0.25; 
+        
+%      case 'clifbar'
+%         syn_s.thr_small=0.04;
+%         syn_s.thr_large=0.25; 
+
+     case 'human3'%big
+        syn_s.thr_small=0.04;
+        syn_s.thr_large=0.25; 
+        
+     case 'box' %big
+        syn_s.thr_small = 0.15;
+        syn_s.thr_large = 0.2; 
         
     otherwise
         syn_s.thr_small=0.04;
