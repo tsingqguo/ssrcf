@@ -31,10 +31,10 @@ if bSaveImage
         axis off;axis image;set(gca, 'Units', 'normalized', 'Position', [0 0 1 1])
     end
     drawnow
-    if frame>117 && mod(frame,2)==0
-        saveas(gcf,['seq_',num2str(frame),'.eps'],'psc2');
-        close
-    end
+%     if frame>117 && mod(frame,2)==0
+%         saveas(gcf,['seq_',num2str(frame),'.eps'],'psc2');
+%         close
+%     end
 end
 
 end
