@@ -18,7 +18,7 @@ data.obj.target_sz = floor(params.wsize);
 data.seq.num_frames = numel(params.s_frames);
 init_target_sz = data.obj.target_sz;
 data.setup.featureRatio = params.t_global.cell_size;
-
+data.seq.selectors = zeros(1,data.seq.num_frames);
 search_area = prod(init_target_sz / data.setup.featureRatio * params.search_area_scale);
 
 if isfield(params.t_global, 'cell_selection_thresh')

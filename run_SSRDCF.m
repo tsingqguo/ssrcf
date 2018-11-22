@@ -1,7 +1,7 @@
 function results = run_SSRDCF(seq, res_path, bSaveImage, parameters)
 
 % function results = run_SSRDCF()
-bSaveImage = 1;
+% bSaveImage = 1;
 % video_path = 'sequences/Hiding';
 % [seq, ~] = load_video_info_zc(video_path);
 
@@ -14,7 +14,19 @@ params = SetParams(seq);
 [params, data] = PrepareData(params);
 
 time = 0;
-
+%% ablation study
+params.ablation = parameters.ablation;
+switch parameters.ablation
+    case '-W_'
+        data.reg.model{2}=[];
+    case '-W_t'
+        data.reg.model{3}=[];
+    case '-W_c'
+        data.reg.model{1}=[];
+    case '-W_t_'
+        data.reg.model{2}=[];
+        data.reg.model{3}=[];
+end
 for frame = 1:data.seq.num_frames
     data.seq.frame = frame;
 %   frame
@@ -30,8 +42,9 @@ for frame = 1:data.seq.num_frames
     
     data.seq.im_prev = data.seq.im;
     
-    Visualization(bSaveImage, params.selector, data.seq.frame, data.seq.im, data.obj.pos, data.obj.target_sz);
-    
+    if bSaveImage
+        Visualization(bSaveImage, params.selector, data.seq.frame, data.seq.im, data.obj.pos, data.obj.target_sz);
+    end
 end
 
 
@@ -42,5 +55,5 @@ fps = numel(params.s_frames) / time;
 results.type = 'rect';
 results.res = data.obj.rects;%each row is a rectangle
 results.fps = fps;
-
+results.selectors = data.seq.selectors;
 end

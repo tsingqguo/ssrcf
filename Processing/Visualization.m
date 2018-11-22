@@ -7,7 +7,7 @@ if bSaveImage
         im_to_show = repmat(im_to_show, [1 1 3]);
     end
     if frame == 1
-        figure
+        figure(1)
         imagesc(im_to_show);
         hold on;
         rectangle('Position',rect_position_vis, 'EdgeColor','g', 'LineWidth',2);
@@ -15,6 +15,7 @@ if bSaveImage
         hold off;
         axis off;axis image;set(gca, 'Units', 'normalized', 'Position', [0 0 1 1])
     else
+        figure(1)
         imagesc(im_to_show);
         hold on;
         if selector == 1
@@ -30,6 +31,10 @@ if bSaveImage
         axis off;axis image;set(gca, 'Units', 'normalized', 'Position', [0 0 1 1])
     end
     drawnow
+    if frame>117 && mod(frame,2)==0
+        saveas(gcf,['seq_',num2str(frame),'.eps'],'psc2');
+        close
+    end
 end
 
 end

@@ -48,12 +48,12 @@ if data.seq.frame > 1
         if params.enableCSR && ~isempty(data.reg.model)
            params.selector  = cal_selector(data.reg.model,ifftshift(slt_response));
         end
-
+        data.seq.selectors(data.seq.frame) = params.selector;
         %% perform detection
         switch params.selector           
             case -1 % context filter
                 params.count_c = params.count_c+1;
-                if params.count_c>params.count_thr
+                if params.count_c>params.count_thr && ~strcmp(params.ablation,'-W_')
                    params.selector = 0; 
                 end
                 params.update_c = 1;
@@ -139,7 +139,7 @@ end
 function selector = cal_selector(svmmodel,response)
 
     [max_response,contrast] = cal_resfeat(response);
-    scores = zeros(3,1);
+    scores = -Inf*ones(3,1);%zeros(3,1);
     for si=1:numel(svmmodel)
         if ~isempty(svmmodel{si})
             [~,score]=predict(svmmodel{si},[max_response,contrast]);
@@ -148,7 +148,7 @@ function selector = cal_selector(svmmodel,response)
     end
 
     [~,selector] = max(scores);
-    if scores(1)==scores(2)
+    if scores(1)==scores(2) && selector ~=3
         selector = 2;
     end
     selector = selector -2;
