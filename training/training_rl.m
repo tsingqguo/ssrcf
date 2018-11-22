@@ -1,19 +1,21 @@
 function training_rl()
 clear
 close all
-base_path = 'D:\tracking\OTB\tracker_benchmark_v1.0/trackers/SSRDCF';
+% base_path = 'D:\tracking\OTB\tracker_benchmark_v1.0/trackers/SSRDCF';
+base_path = 'C:\Users\ASUS\Desktop\tracker_benchmark_v1.0\trackers/SSRDCF';
 addpath(fullfile(base_path,'/Processing/'));
 addpath(fullfile(base_path,'utils/'));
 % addpath(genpath('/home/fan/Desktop/Object_Tracking/libsvm/matlab'));
 
-pathAnno = 'D:\tracking\OTB\tracker_benchmark_v1.0/anno/';
+% pathAnno = 'D:\tracking\OTB\tracker_benchmark_v1.0/anno/';
+pathAnno = 'C:\Users\ASUS\Desktop\tracker_benchmark_v1.0/anno/';
 save_path = fullfile(base_path,'/training/train_results');
 trainstate=1;
 seqs = configSeqs_rl;
 
 numSeq=length(seqs);
 syn_s_len = 100;
-for idxSeq =1:numSeq
+for idxSeq =51:51
     %     while trainstate ==0
     s = seqs{idxSeq};
     rect_anno = dlmread([pathAnno s.name '.txt']);
@@ -139,8 +141,8 @@ switch s.name(1:end-2)
 
     % fine-tune   
     case 'lemming'
-        syn_s.thr_small=0.15;
-        syn_s.thr_large=0.15; 
+        syn_s.thr_small=0.09;
+        syn_s.thr_large=0.25; 
     case 'girl'%ran
         syn_s.thr_small=0.1;
         syn_s.thr_large=0.25;  
@@ -159,7 +161,7 @@ switch s.name(1:end-2)
      case 'ironman'%small
         syn_s.thr_small=0.04;
         syn_s.thr_large=0.12;       
-     case 'wonman'
+     case 'woman'
         syn_s.thr_small=0.1;
         syn_s.thr_large=0.4;   
      case 'shaking'%big
@@ -169,7 +171,15 @@ switch s.name(1:end-2)
      case 'carscale'%small
         syn_s.thr_small=0.02;
         syn_s.thr_large=0.15; 
-     
+        
+     % gq add    
+     case 'coke'%small
+        syn_s.thr_small=0.07;
+        syn_s.thr_large=0.25; 
+ 
+     case 'motorrolling'%small
+        syn_s.thr_small=0.07;
+        syn_s.thr_large=0.15; 
      %----------2015----------   
      case 'coupon'%small
         syn_s.thr_small=0.04;
